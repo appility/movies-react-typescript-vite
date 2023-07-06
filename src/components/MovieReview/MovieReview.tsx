@@ -1,15 +1,12 @@
 import {
   Box,
-  Button,
   Dialog,
   DialogContent,
   DialogTitle,
   IconButton,
   Paper,
-  Typography,
 } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
-import { useForm } from "react-hook-form"
 import { useMediaQuery } from "usehooks-ts"
 import ConditionalWrapper from "@/components/ConditionalWrapper/ConditionalWrapper"
 import MovieReviewForm from "@/components/MovieReviewForm/MovieReviewForm"
@@ -18,14 +15,6 @@ import { Movie } from "@/models"
 interface MovieReviewProps {
   selectedMovie: Movie
   onClose: () => void
-}
-
-interface IFormInput {
-  textValue: string
-}
-
-const defaultValues = {
-  textValue: "",
 }
 
 const MovieReview = ({ selectedMovie, onClose }: MovieReviewProps) => {

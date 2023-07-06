@@ -1,18 +1,16 @@
 import {
   Control,
   Controller,
-  FieldName,
   FieldPathValue,
   FieldValues,
   RegisterOptions,
 } from "react-hook-form"
-import { TextField, TextareaAutosize } from "@mui/material"
-import { styled } from "@mui/system"
+import { TextField } from "@mui/material"
 import { IFormInput } from "@/components/MovieReviewForm/MovieReviewForm"
 
 export interface FormInputProps {
   name: FieldPathValue<FieldValues, string>
-  control: Control<IFormInput, any>
+  control: Control<IFormInput, string>
   rules: RegisterOptions<FieldValues, string>
 }
 
@@ -22,37 +20,31 @@ export const FormTextarea = ({ name, control, rules }: FormInputProps) => {
       name={name}
       control={control}
       rules={rules}
-      render={({
-        field: { onChange, value },
-        fieldState: { error },
-        formState,
-      }) => {
-        var helperText = "Max 100 chars"
+      render={({ field: { onChange, value }, fieldState: { error } }) => {
+        let helperText = ""
         if (error && error.type === "required") {
-          helperText = "This field is required"
+          helperText = error.message ? error.message : "Required"
         }
         if (error && error.type === "maxLength") {
-          helperText = "Max length exceeded"
+          helperText = error.message ? error.message : "Max length exceeded"
         }
         return (
-          <>
-            <TextField
-              name={name}
-              multiline
-              minRows={5}
-              onChange={onChange}
-              value={value}
-              error={error ? true : false}
-              id={name}
-              helperText={helperText}
-              InputProps={{ sx: { fontWeight: "300" } }}
-              sx={{
-                width: "100%",
-                fontWeight: 300,
-              }}
-              InputLabelProps={{ sx: { display: "none" } }}
-            />
-          </>
+          <TextField
+            name={name}
+            multiline
+            minRows={5}
+            onChange={onChange}
+            value={value}
+            error={error ? true : false}
+            id={name}
+            helperText={helperText}
+            InputProps={{ sx: { fontWeight: "300" } }}
+            sx={{
+              width: "100%",
+              fontWeight: 300,
+            }}
+            InputLabelProps={{ sx: { display: "none" } }}
+          />
         )
       }}
     />

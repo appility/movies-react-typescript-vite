@@ -2,8 +2,8 @@ import { useState } from "react"
 import { postReview, ApiError } from "@/clientProvider/queryClient"
 
 const useMovieReview = () => {
-  const [data, setData] = useState<{ message: string } | null>()
-  const [error, setError] = useState<ApiError>()
+  const [data, setData] = useState<{ message: string } | null>(null)
+  const [error, setError] = useState<ApiError | null>(null)
   const [loading, setLoading] = useState(false)
 
   const _postData = async (data: { reviewText: string }) => {

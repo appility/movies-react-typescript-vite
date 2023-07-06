@@ -8,7 +8,7 @@ export const formatPrice = (value: number) => {
 }
 
 export const getAverage = (arr: number[]) => {
-  const reducer = (total: any, currentValue: number) => total + currentValue
+  const reducer = (total: number, currentValue: number) => total + currentValue
   const sum = arr.reduce(reducer, 0)
   return sum / arr.length
 }

@@ -1,3 +1,4 @@
+import { Movie } from "@/models"
 import { formatPrice, getAverage } from "@/utils/Numbers"
 import {
   Table,
@@ -11,9 +12,9 @@ import {
 
 interface DefaultTableProps {
   headings: string[]
-  rows: any[]
-  selectedRowId: string
-  setSelectedRow: (arg0: any) => void
+  rows: Movie[]
+  selectedRowId: string | undefined
+  setSelectedRow: (arg0: Movie) => void
 }
 
 const DefaultTable = ({
@@ -27,7 +28,7 @@ const DefaultTable = ({
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            {headings.map((heading, index, { length }) => (
+            {headings.map((heading, index) => (
               <TableCell
                 key={`heading-${index}`}
                 align={`${index === 0 ? "left" : "right"}`}

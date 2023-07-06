@@ -44,33 +44,3 @@ export const handlers = [
     )
   }),
 ]
-
-// // GET movie companies: https://comforting-starlight-f3456a.netlify.app/.netlify/functions/movieCompanies
-// // GET movies: https://comforting-starlight-f3456a.netlify.app/.netlify/functions/movies
-// POST review: https://comforting-starlight-f3456a.netlify.app/.netlify/functions/submitReview
-
-// const res = await axios.get('http://127.0.0.1:5000/', {
-//         headers: { 'Content-Type': 'application/json' }
-//       });
-// return axios.all([
-//   getMovies(),
-//   getMovieCompanies()
-// ])
-// .then(axios.spread((movies, movieCompanies) => {
-//   // output of req.
-//   console.log('data1', movies, 'data2', movieCompanies)
-//   return new Promise(movies)
-// }))
-
-// const config = {
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// };
-// try {
-//   const response = await axios.get(`${API_BASE_URL}/movies`);
-//   return response.data;
-// } catch (err: unknown | AxiosError) {
-//   throw err as ApiError;
-// }
-//};

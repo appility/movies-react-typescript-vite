@@ -1,4 +1,5 @@
-import axios, { AxiosError } from "./axiosConfig"
+import axios from "./axiosConfig"
+import { AxiosError } from "axios" // eslint-disable-line @typescript-eslint/no-unused-vars
 import { QueryClient } from "@tanstack/react-query"
 import { Movie, MovieCompany } from "@/models"
 import { joinMovieAndFilmCompanies } from "@/utils/Data"

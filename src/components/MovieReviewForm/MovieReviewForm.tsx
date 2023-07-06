@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Alert, Box, Button, Typography } from "@mui/material"
 import { useForm } from "react-hook-form"
-import { useMediaQuery } from "usehooks-ts"
 import { FormTextarea } from "@/components/Form/FormTextarea/FormTextarea"
 import useMovieReview from "@/hooks/useMovieReview"
 import { Movie } from "@/models"
@@ -15,15 +14,13 @@ const defaultValues = {
 }
 
 const MovieReviewForm = ({ selectedMovie }: { selectedMovie: Movie }) => {
-  const isMobile = useMediaQuery("(max-width: 768px)")
   const { data, loading, error, resetData, sendMovieReview } = useMovieReview()
-  const [showCompleted, setShowCompleted] = useState(false)
 
   useEffect(() => {
     resetData()
   }, [selectedMovie])
 
-  const { handleSubmit, reset, control, setValue } = useForm<IFormInput>({
+  const { handleSubmit, control } = useForm<IFormInput>({
     defaultValues: defaultValues,
   })
 
@@ -34,7 +31,7 @@ const MovieReviewForm = ({ selectedMovie }: { selectedMovie: Movie }) => {
   if (error)
     return (
       <Alert severity="error">
-        We can't send this data right now.{" "}
+        We can&apos;t send this data right now.{" "}
         {error instanceof Error && error.message}
       </Alert>
     )
@@ -61,8 +58,11 @@ const MovieReviewForm = ({ selectedMovie }: { selectedMovie: Movie }) => {
           name={"message"}
           control={control}
           rules={{
-            required: "This is required.",
-            maxLength: 100,
+            required: "The field is required.",
+            maxLength: {
+              value: 100,
+              message: 'Too many "characters", maximum is 100.',
+            },
           }}
         />
       </Box>

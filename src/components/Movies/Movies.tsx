@@ -14,7 +14,7 @@ const Movies = () => {
     <>
       <MovieList
         onSelect={(row: Movie) => setSelectedMovie(row)}
-        selectedMovie={selectedMovie!}
+        selectedMovie={selectedMovie}
       />
       {selectedMovie && (
         <MovieReview selectedMovie={selectedMovie} onClose={handleClose} />
