@@ -2,7 +2,7 @@ export interface Movie {
   id: string
   title: string
   filmCompanyId: string
-  filmCompanName?: string
+  filmCompanyName?: string
   reviews: number[]
   cost: number
   releaseYear: string
